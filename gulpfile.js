@@ -50,3 +50,14 @@ gulp.task("default", gulp.parallel('vendor'));
 
 // dev task
 gulp.task("dev", gulp.parallel(watchFiles, browserSync));
+
+// webserver task
+var webserver = require('gulp-webserver');
+gulp.task('webserver', function() {
+  gulp.src('./')
+    .pipe(webserver({
+      port: 3000,
+      fallback: 'index.html',
+      directoryListing: false
+    }));
+});
